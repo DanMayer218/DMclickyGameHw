@@ -1,2 +1,6 @@
 /* font-family: 'Special Elite', cursive;
 font-family: 'Quicksand', sans-serif; */
+#headerContainer {
+
+    background-image: linear-gradient(-90deg, rgb(63, 63, 63), rgb(151, 151, 151));
+}

@@ -7,7 +7,7 @@ import Header from "../Header/Header";
 
 class Grid extends Component {
     state = {
-        rorshach: rorshach,
+        Rorshach: rorshach,
         score: 0
     }
 
@@ -53,6 +53,7 @@ class Grid extends Component {
        guessedCorrect ? this.handleCorrect(newRorshach) : this.handleWrong(newRorshach)
     };
 
+    // shuffleArray runs a for loop through the rorshach.json array length and randomizes the array for the next selection.  It ends by returning the array
     shuffleArray = rorshach => {
         for (let i = rorshach.length - 1; i > 0; i--) {
             const j = Math.floor(Math.random() * (i + 1));
@@ -61,10 +62,14 @@ class Grid extends Component {
         return (rorshach);
     };
 
+    // This block renders the html elements that will dynamically display in the dom.
     render() {
         return(
+            // The div element that houses grid to be rendered
             <div>
+                {/* The header element that will display the score */}
                 <Header score={this.state.score}/>
+                {/* Wrapper that will hold the cards and the actual grid */}
                 <div className="gridWrapper">
                     <div className="grid">
                     {this.state.rorshach.map(rorshach => {
