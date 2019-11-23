@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 import "./Grid.css";
-import rorshach from "clicky-game/src/Components/rorshach.json";
+import "./rorshach.json";
 import Card from "../Card";
 import Header from "../Header/Header";
 
@@ -14,7 +14,7 @@ class Grid extends Component {
     resetGame = () => {
         this.setState({
             score: 0,
-            // rorshach: rorschach
+            rorshach: this.shuffleArray(newRorshach)
         });      
     }
 
@@ -67,7 +67,7 @@ class Grid extends Component {
                 <Header score={this.state.score}/>
                 <div className="gridWrapper">
                     <div className="grid">
-                    {this.state.rorshach.map(femme => {
+                    {this.state.rorshach.map(rorshach => {
                             return (<Card 
                             name={rorshach.name}
                             key={rorshach.name} 
