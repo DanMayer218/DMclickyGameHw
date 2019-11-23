@@ -1,21 +1,21 @@
 import React, {Component} from "react";
 import "./Grid.css";
-import rorshachBlots from "../../rorshach.json";
+import rorshach from "clicky-game/src/Components/rorshach.json";
 import Card from "../Card";
 import Header from "../Header/Header";
 
 
 class Grid extends Component {
     state = {
-        rorshach: rorshachBlots,
+        rorshach: rorshach,
         score: 0
     }
 
     resetGame = () => {
         this.setState({
             score: 0,
-            rorshach: rorschachBlots
-        })      
+            // rorshach: rorschach
+        });      
     }
 
     handleCorrect = newRorshach => {
@@ -24,7 +24,7 @@ class Grid extends Component {
             score: this.state.score +1,
         });
         
-        if (this.state.score === 11) {
+        if (this.state.score === 12) {
             this.resetGame();
             console.log("You won!");
         }
@@ -37,7 +37,7 @@ class Grid extends Component {
 
     handleClick = name => {
         let guessedCorrect = false;
-        const newRorshach = this.state.rorshach.map(femme => {
+        const newRorshach = this.state.rorshach.map(rorshach => {
            const newPic = {...rorshach};
            if (newPic.name === name) {
                if(!newPic.clicked){
