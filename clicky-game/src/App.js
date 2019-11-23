@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import Wrapper from "./components/Wrapper/Wrapper";
-import Grid from "./components/Grid/Grid";
+import Wrapper from "./components/Wrapper/wrapper";
+import Grid from "./Components/Grid/grid";
 
 
 class App extends Component {

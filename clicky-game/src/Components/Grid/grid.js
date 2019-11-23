@@ -1,26 +1,26 @@
 import React, {Component} from "react";
 import "./Grid.css";
-import femmeBlocks from "../../femmes.json";
+import rorshachBlots from "../../rorshach.json";
 import Card from "../Card";
 import Header from "../Header/Header";
 
 
 class Grid extends Component {
     state = {
-        femmes: femmeBlocks,
+        rorshach: rorshachBlots,
         score: 0
     }
 
     resetGame = () => {
         this.setState({
             score: 0,
-            femmes: femmeBlocks
+            rorshach: rorschachBlots
         })      
     }
 
-    handleCorrect = newFemmes => {
+    handleCorrect = newRorshach => {
         this.setState({
-            femmes: this.shuffleArray(newFemmes), 
+            rorshach: this.shuffleArray(newRorshach), 
             score: this.state.score +1,
         });
         
@@ -37,8 +37,8 @@ class Grid extends Component {
 
     handleClick = name => {
         let guessedCorrect = false;
-        const newFemmes = this.state.femmes.map(femme => {
-           const newPic = {...femme};
+        const newRorshach = this.state.rorshach.map(femme => {
+           const newPic = {...rorshach};
            if (newPic.name === name) {
                if(!newPic.clicked){
                    console.log("Already guessed------------");
@@ -50,15 +50,15 @@ class Grid extends Component {
            return newPic;
        })       
        console.log("GUESSED CORRECT: ", guessedCorrect)
-       guessedCorrect ? this.handleCorrect(newFemmes) : this.handleWrong(newFemmes)
+       guessedCorrect ? this.handleCorrect(newRorshach) : this.handleWrong(newRorshach)
     };
 
-    shuffleArray = femmes => {
-        for (let i = femmes.length - 1; i > 0; i--) {
+    shuffleArray = rorshach => {
+        for (let i = rorshach.length - 1; i > 0; i--) {
             const j = Math.floor(Math.random() * (i + 1));
-            [femmes[i], femmes[j]] = [femmes[j], femmes[i]];
+            [rorshach[i], rorshach[j]] = [rorshach[j], rorshach[i]];
         }
-        return (femmes);
+        return (rorshach);
     };
 
     render() {
@@ -67,13 +67,13 @@ class Grid extends Component {
                 <Header score={this.state.score}/>
                 <div className="gridWrapper">
                     <div className="grid">
-                    {this.state.femmes.map(femme => {
+                    {this.state.rorshach.map(femme => {
                             return (<Card 
-                            name={femme.name}
-                            key={femme.name} 
+                            name={rorshach.name}
+                            key={rorshach.name} 
                             handleClick={this.handleClick}
-                            src={femme.image} 
-                            alt={femme.name}  
+                            src={rorshach.image} 
+                            alt={rorshach.name}  
                         />)
                         })}
                     </div>
